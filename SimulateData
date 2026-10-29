@@ -1,9 +1,8 @@
-"""Simulación simple de una campaña de telemarketing bancario.
+#  Simulación de una campaña de telemarketing bancario.
 
-Genera ~30k llamadas en 6 meses. El target `convirtio` (1 = contrató tarjeta de
-crédito) depende de un logit latente con ruido
-(desbalanceado ~10-12% y no perfectamente separable).
-"""
+#  Genera ~30k llamadas en 6 meses. El target `convirtio` (1 = contrató tarjeta de crédito) depende de un logit latente con ruido
+#  (desbalanceado ~10-12% y no perfectamente separable).
+
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -53,8 +52,7 @@ def simulate(n: int = N, seed: int = SEED) -> pd.DataFrame:
     p = sigmoid(logit)
     convirtio = rng.binomial(1, p)
 
-    # Duración: DEPENDE del resultado -> es data leakage, se incluye a propósito
-    # para mostrar por qué NO debe usarse en el modelo.
+    # Ya que la duración depende del resultado -> es data leakage, se incluye a propósito para mostrar por qué NO debe usarse en el modelo.
     duracion = np.where(
         convirtio == 1, rng.gamma(6, 55, n), rng.gamma(2.2, 40, n)
     ).round().astype(int)
