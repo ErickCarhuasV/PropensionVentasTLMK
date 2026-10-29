@@ -1,6 +1,5 @@
-"""
-Pasos utilizados: split temporal -> regresión logística vs HistGradientBoosting es una comparativa realizada para evalular el mejro mdoelo
-"""
+# Se utiliza el plit temporal -> regresión logística vs HistGradientBoosting es una comparativa realizada para evalular el mejro mdoelo
+
 from pathlib import Path
 import json
 import numpy as np
@@ -26,7 +25,7 @@ NUM = ["edad", "ingreso_mensual", "antiguedad_meses", "score_riesgo",
 CAT = ["segmento", "resultado_previo", "dia_semana", "canal"]
 TARGET = "convirtio"
 
-# Costos dentro del negocio, es un aprox respecto a una entidad bancaria donde laboré !
+# Costos dentro del negocio, es un aprox respecto a una entidad bancaria !
 COSTO_LLAMADA = 12.0        # S/ por llamada (agente + telefonía)
 INGRESO_CONVERSION = 120.0  # S/ de margen por tarjeta contratada
 
